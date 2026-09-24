@@ -39,3 +39,4 @@ data/app-data.js
 ```
 
 El hosting debe servir `index.html` como página principal. El QR debe generarse únicamente después de obtener y verificar la URL pública definitiva.
+Actualizacion de publicacion

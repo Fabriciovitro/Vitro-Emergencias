@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123b63">
+  <meta name="description" content="Área General de Emergencias de VITRO.">
+  <title>VITRO | Área General de Emergencias</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="data/app-data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <svg class="icon-library" aria-hidden="true">
+    <symbol id="icon-flame" viewBox="0 0 24 24">
+      <path d="M12.8 2.5c.5 3-1.2 4.2-2.7 5.8-1.3 1.4-2.2 2.8-1.4 4.8.7-1.1 1.6-1.8 2.7-2.5-.1 2 1.2 3.1 2.3 4.2 1 .9 1.5 2 1.2 3.6 1.8-1.2 2.8-3.2 2.8-5.4 0-3.7-2-7.6-4.9-10.5Z"/>
+      <path d="M9.2 20.8c-2.8-1-4.7-3.6-4.7-6.7 0-2.4 1-4.6 2.9-6.6-.2 2.5.7 3.8 1.3 4.5"/>
+      <path d="M13.8 21.2c-1.8.7-4-.2-4.4-2.2-.4-1.8.7-3.1 2.2-4.2.1 1.2.8 1.8 1.5 2.5.9.8 1.2 2.3.7 3.9Z"/>
+    </symbol>
+    <symbol id="icon-drop" viewBox="0 0 24 24">
+      <path d="M12 2.5S5.5 9.4 5.5 14.7a6.5 6.5 0 0 0 13 0C18.5 9.4 12 2.5 12 2.5Z"/>
+      <path d="M9 15.2a3.2 3.2 0 0 0 3.2 3.2"/>
+    </symbol>
+    <symbol id="icon-bolt" viewBox="0 0 24 24">
+      <path d="m13.5 2-8 11h6l-1 9 8-12h-6l1-8Z"/>
+    </symbol>
+    <symbol id="icon-elevator" viewBox="0 0 24 24">
+      <rect x="4" y="2.5" width="16" height="19" rx="1"/>
+      <path d="M12 6v12M7.5 6.5 9.5 4.5l2 2M16.5 17.5l-2 2-2-2"/>
+    </symbol>
+    <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+      <path d="m15 18-6-6 6-6M9 12h11"/>
+    </symbol>
+    <symbol id="icon-building" viewBox="0 0 24 24">
+      <path d="M4 21V5l8-3v19M12 8h8v13M2 21h20"/>
+      <path d="M7.5 7h1M7.5 11h1M7.5 15h1M15.5 11h1M15.5 15h1"/>
+    </symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24">
+      <path d="M8.1 3H4.8C3.8 3 3 3.8 3 4.8 3 13.7 10.3 21 19.2 21c1 0 1.8-.8 1.8-1.8v-3.3l-4.2-1-1.2 2.5a14.6 14.6 0 0 1-9-9L9 7.2 8.1 3Z"/>
+    </symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24">
+      <path d="M12 2.5 20 6v5.4c0 5.1-3.3 8.3-8 10.1-4.7-1.8-8-5-8-10.1V6l8-3.5Z"/>
+      <path d="m8.5 12 2.2 2.2 4.8-5"/>
+    </symbol>
+    <symbol id="icon-chevron" viewBox="0 0 24 24">
+      <path d="m9 18 6-6-6-6"/>
+    </symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand" aria-label="VITRO, Área General de Emergencias">
+        <div class="brand-mark" aria-hidden="true">V</div>
+        <div class="brand-copy">
+          <strong>VITRO</strong>
+          <span>Área General de Emergencias</span>
+        </div>
+      </div>
+      <div class="service-status" aria-label="Servicio de información disponible">
+        <span class="status-dot"></span>
+        Información disponible
+      </div>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="building-context" aria-label="Edificio seleccionado">
+      <svg class="context-icon"><use href="#icon-building"></use></svg>
+      <div>
+        <span>Edificio seleccionado</span>
+        <strong id="building-name"></strong>
+      </div>
+    </section>
+
+    <section id="home-view" class="view view-home" aria-labelledby="home-title">
+      <div class="intro">
+        <p class="eyebrow">Asistencia inmediata</p>
+        <h1 id="home-title" tabindex="-1">¿Qué tipo de emergencia tenés?</h1>
+        <p>Seleccioná una opción para consultar los datos de contacto disponibles.</p>
+      </div>
+
+      <div id="emergency-grid" class="emergency-grid" aria-label="Tipos de emergencia"></div>
+
+      <aside class="notice" aria-label="Información importante">
+        <svg><use href="#icon-shield"></use></svg>
+        <p><strong>Ante un riesgo inmediato, priorizá tu seguridad.</strong> Esta plataforma brinda información de contacto y no reemplaza a los servicios públicos de emergencia.</p>
+      </aside>
+    </section>
+
+    <section id="detail-view" class="view view-detail" aria-labelledby="detail-title" hidden>
+      <button id="back-button" class="back-button" type="button">
+        <svg><use href="#icon-arrow-left"></use></svg>
+        Volver a emergencias
+      </button>
+
+      <div class="detail-heading">
+        <div id="detail-icon" class="detail-icon" aria-hidden="true"></div>
+        <div>
+          <p class="eyebrow">Información de contacto</p>
+          <h1 id="detail-title" tabindex="-1"></h1>
+          <p id="detail-description"></p>
+        </div>
+      </div>
+
+      <div id="provider-list" class="provider-list"></div>
+      <p class="phone-disclaimer">Los teléfonos se muestran únicamente como referencia. La aplicación no realiza llamadas automáticas.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>VITRO · Gestión de edificios</span>
+      <span>Prototipo informativo</span>
+    </div>
+  </footer>
+
+  <noscript>Necesitás habilitar JavaScript para navegar por las categorías de emergencia.</noscript>
+</body>
+</html>
